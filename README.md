@@ -10,7 +10,10 @@ PORT=3000
 
 MAILER_EMAIL= 
 MAILER_SECRET_KEY= 
-
+MAILER_SERVICE=gmail
 PROD=false
 
 ```
+
+3. Ejecutar comando ```npm install```
+4. Ejecutar comando ```npm run dev```

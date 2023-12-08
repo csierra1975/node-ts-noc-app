@@ -1,9 +1,11 @@
-import { LogEntity, LogSeverityLevel } from "../../entities/log.entity"
+import { ILogEntityOptions, LogEntity, LogSeverityLevel } from "../../entities/log.entity"
 import { LogRepository } from "../../repository/log.repository"
 
 export interface ICheckServiceUseCase {
     execute(url: string): Promise<boolean>
 }
+
+const checkServiceOrigin =  'Check-service.ts'
 
 type SuccssCallback = (() => void) | undefined
 type ErrorCallback = (( error: string ) => void) | undefined
@@ -25,14 +27,26 @@ export class CheckSevice implements ICheckServiceUseCase {
             }
 
             this.successCallback && this.successCallback();
-            const entity = new LogEntity(`Service ${ url } working`, LogSeverityLevel.low)
+            const options: ILogEntityOptions = {
+                message: `Service ${ url } working`,
+                level: LogSeverityLevel.low,
+                origin: checkServiceOrigin
+            }
+
+            const entity = new LogEntity(options)
             this.logRepository.saveLog(entity)
 
             return true
         }
         catch(error){
             const errorMessage = `${ error }`
-            const entity = new LogEntity(errorMessage, LogSeverityLevel.high)
+            const options: ILogEntityOptions = {
+                message: errorMessage,
+                level: LogSeverityLevel.high,
+                origin: checkServiceOrigin
+            }
+
+            const entity = new LogEntity(options)
             this.logRepository.saveLog(entity)
 
             this.errorCallback && this.errorCallback(errorMessage)
