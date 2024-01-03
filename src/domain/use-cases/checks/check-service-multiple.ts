@@ -1,7 +1,7 @@
 import { ILogEntityOptions, LogEntity, LogSeverityLevel } from "../../entities/log.entity"
 import { LogRepository } from "../../repository/log.repository"
 
-export interface ICheckServiceUseCase {
+export interface ICheckServiceMultipleUseCase {
     execute(url: string): Promise<boolean>
 }
 
@@ -10,15 +10,21 @@ const checkServiceOrigin =  'Check-service.ts'
 type SuccssCallback = (() => void) | undefined
 type ErrorCallback = (( error: string ) => void) | undefined
 
-export class CheckSevice implements ICheckServiceUseCase {
+export class CheckSeviceMultiple implements ICheckServiceMultipleUseCase {
 
     constructor(
-        private readonly logRepository: LogRepository,
+        private readonly logRepositories: LogRepository[],
         private readonly successCallback: SuccssCallback,
         private readonly errorCallback: ErrorCallback,
     ){}
 
-    async execute(url: string): Promise<boolean> {
+    private callLogs(log: LogEntity) {
+        this.logRepositories.forEach( repository => {
+            repository.saveLog(log)
+        })
+    }
+
+    public async execute(url: string): Promise<boolean> {
 
         try {
             const req = await fetch ( url )
@@ -34,7 +40,7 @@ export class CheckSevice implements ICheckServiceUseCase {
             }
 
             const entity = new LogEntity(options)
-            this.logRepository.saveLog(entity)
+            this.callLogs(entity)
 
             return true
         }
@@ -47,7 +53,7 @@ export class CheckSevice implements ICheckServiceUseCase {
             }
 
             const entity = new LogEntity(options)
-            this.logRepository.saveLog(entity)
+            this.callLogs(entity)
 
             this.errorCallback && this.errorCallback(errorMessage)
             return false
