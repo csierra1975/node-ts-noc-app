@@ -1,9 +1,14 @@
 node_modules/
 dist/
+
+# Logs
+.DS_Store
+
 logs/
+
 .env
 
-mongo/
-postgres/
-mongo-test/
-postgres-test/
+/mongo
+/postgres
+/mongo-test
+/postgres-test
