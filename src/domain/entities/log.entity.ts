@@ -33,7 +33,7 @@ export class LogEntity {
 
         //if (!message) throw new Error('Message is')
 
-        return  new LogEntity({ message, level, createAt, origin });
+        return  new LogEntity({ message, level, createAt: new Date(createAt), origin });
     }
 
     static fromObject = (object: { [key: string]: any}): LogEntity => {
