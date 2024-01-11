@@ -9,17 +9,23 @@ Go to D:\CURSOS\NODE\Seccion_08\06-JSON-SERVER and excecute npm start to run the
     ```
     docker compose up -d
     ```
-5. Ejecutar ```npm run dev``
+5. Ejecutar comando ```
+                        npx prisma migrate dev -> para generar la base de datos en postgres
+                        npx prisma migrate pool -> para cargar los modelos acorde a la base de datos en postgres
+                        ```
 
 
-PORT=3000
+6. Ejecutar comando ```npm install```
+7. Ejecutar ```npm run dev``
 
-MAILER_EMAIL= 
-MAILER_SECRET_KEY= 
-MAILER_SERVICE=gmail
-PROD=false
+Esto es para el fichero DEV ```
+    PORT=3000
+
+    MAILER_EMAIL= 
+    MAILER_SECRET_KEY= 
+    MAILER_SERVICE=gmail
+    PROD=false
 
 ```
 
-3. Ejecutar comando ```npm install```
-4. Ejecutar comando ```npm run dev```
+
