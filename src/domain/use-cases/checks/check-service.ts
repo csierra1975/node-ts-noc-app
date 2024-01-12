@@ -10,7 +10,7 @@ const checkServiceOrigin =  'Check-service.ts'
 type SuccssCallback = (() => void) | undefined
 type ErrorCallback = (( error: string ) => void) | undefined
 
-export class CheckSevice implements ICheckServiceUseCase {
+export class CheckService implements ICheckServiceUseCase {
 
     constructor(
         private readonly logRepository: LogRepository,

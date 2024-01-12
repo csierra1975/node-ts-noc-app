@@ -14,8 +14,8 @@ const logScheme = new mongoose.Schema({
     origin: {
         type: String
     },
-    createAt: {
-        type: String,
+    createdAt: {
+        type: Date,
         default: new Date()
     },
 })

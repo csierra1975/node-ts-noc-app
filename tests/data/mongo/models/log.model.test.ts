@@ -19,7 +19,7 @@ describe('log.mode.test.ts', () => {
     test('should return LogModel', async () => {
         // Borrar
     })
-/*
+
     test('should return LogModel', async () => {
 
         const logData = {
@@ -32,7 +32,7 @@ describe('log.mode.test.ts', () => {
 
         expect(log).toEqual( expect.objectContaining({
            ...logData,
-            createAt: expect.any(Date),
+            createdAt: expect.any(Date),
             id: expect.any(String)
         }))
 
@@ -52,8 +52,8 @@ describe('log.mode.test.ts', () => {
               default: 'low'
             },
             origin: { type: expect.any(Function) },
-            createAt: expect.any(Object)
+            createdAt: expect.any(Object)
           }))
     })
-*/
+
 })

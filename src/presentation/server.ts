@@ -1,4 +1,4 @@
-import { CheckSevice } from "../domain/use-cases/checks/check-service"
+import { CheckService } from "../domain/use-cases/checks/check-service"
 import { CheckSeviceMultiple } from "../domain/use-cases/checks/check-service-multiple"
 import { SendEmailLogs } from "../domain/use-cases/sendEmail/send-mail-logs"
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource"

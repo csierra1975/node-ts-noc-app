@@ -10,7 +10,7 @@ export interface ISendMailOptions {
     attachments?: IAttachments[]
 }
 
-interface IAttachments {
+export interface IAttachments {
     fileName: string,
     path: string
 }
